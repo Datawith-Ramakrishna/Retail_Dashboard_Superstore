@@ -13,7 +13,7 @@ loss-making products, and regional performance.
 - `sql/superstore_analysis.sql` – 12 business queries (MSSQL)
 - `powerbi/dax_measures.txt` – KPIs & running totals
 - `powerbi/theme.json` – clean theme
-- `data/sample_superstore_1k.csv` – tiny sample for demo (no PII)
+- `data/sample_superstore.csv` – Dataset
 
 ## Business Questions
 1) Which regions drive sales/profit?  
@@ -74,4 +74,4 @@ Indicates room to improve customer retention.
 - Built with: SQL Server, Power BI, DAX.
 
 ## Contact
-Ramakrishna Reddy · [LinkedIn](www.linkedin.com/in/ramakrishnareddy-parvatareddy-b44a15325) · Email: ramakrishna.parvatareddy@gmail.com
+Ramakrishnareddy · [LinkedIn](www.linkedin.com/in/ramakrishnareddy-parvatareddy-b44a15325) · Email: ramakrishna.parvatareddy@gmail.com
