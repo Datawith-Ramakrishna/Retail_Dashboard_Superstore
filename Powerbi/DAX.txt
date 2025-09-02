@@ -1,0 +1,73 @@
+-- ======================
+-- Core KPIs
+-- ======================
+Total Sales =
+SUM ( Superstore[Sales] )
+
+Total Profit =
+SUM ( Superstore[Profit] )
+
+Profit Margin % =
+DIVIDE ( [Total Profit], [Total Sales] )
+
+AOV (Average Order Value) =
+DIVIDE ( [Total Sales], DISTINCTCOUNT ( Superstore[Order_ID] ) )
+
+Total Orders =
+DISTINCTCOUNT ( Superstore[Order_ID] )
+
+
+-- ======================
+-- Time Intelligence
+-- ======================
+Running Total Sales =
+CALCULATE (
+    [Total Sales],
+    FILTER (
+        ALLSELECTED ( DateTable ),
+        DateTable[Date] <= MAX ( DateTable[Date] )
+    )
+)
+
+Monthly Sales =
+CALCULATE (
+    [Total Sales],
+    VALUES ( DateTable[YearMonth] )
+)
+
+
+-- ======================
+-- Customer Insights
+-- ======================
+Customer Order Count =
+COUNTROWS ( DISTINCT ( Superstore[Order_ID] ) )
+
+Customer Frequency Band =
+SWITCH (
+    TRUE(),
+    [Customer Order Count] = 1, "1 Order",
+    [Customer Order Count] <= 3, "2–3 Orders",
+    [Customer Order Count] <= 5, "4–5 Orders",
+    "6+ Orders"
+)
+
+
+-- ======================
+-- Profitability by Segment
+-- ======================
+Positive Profit =
+IF ( [Total Profit] >= 0, [Total Profit], BLANK() )
+
+Negative Profit =
+IF ( [Total Profit] < 0, [Total Profit], BLANK() )
+
+
+-- ======================
+-- Discount Analysis
+-- ======================
+Total Discount =
+SUM ( Superstore[Discount] )
+
+Profit after Discount =
+[Total Profit] - [Total Discount]
+
